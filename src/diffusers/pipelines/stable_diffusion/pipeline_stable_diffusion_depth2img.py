@@ -420,6 +420,8 @@ class StableDiffusionDepth2ImgPipeline(DiffusionPipeline):
         else:
             depth_map = depth_map.to(device=device, dtype=dtype)
 
+        print("depth_map size() = ",depth_map.size())
+
         depth_map = torch.nn.functional.interpolate(
             depth_map.unsqueeze(1),
             size=(height // self.vae_scale_factor, width // self.vae_scale_factor),
